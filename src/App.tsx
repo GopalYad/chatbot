@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ChatInput from "./components/ChatInput"
 import ChatMessage from "./components/ChatMessage"
+import { getGeminiResponse } from "./services/gemini"
 
 function App() {
 type ChatMessageType = {
@@ -11,15 +12,23 @@ type ChatMessageType = {
 
 const [chatMessages, setChatMessages] = useState<ChatMessageType[]>([]);
 
- const sendUserMessage = (message: string) => {
-  setChatMessages([
-    ...chatMessages,
-    {
+ const sendUserMessage = async (message: string) => {
+    // Add user message
+    const newUserMessage = {
       message,
       sender: 'user',
       id: chatMessages.length + 1
-    }
-  ]);
+    };
+    setChatMessages(prev => [...prev, newUserMessage]);
+
+    // Get and add bot response
+    const botResponse = await getGeminiResponse(message);
+    const newBotMessage = {
+      message: botResponse,
+      sender: 'robot',
+      id: chatMessages.length + 2
+    };
+    setChatMessages(prev => [...prev, newBotMessage]);
  }
  
   return (
