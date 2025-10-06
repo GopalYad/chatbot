@@ -16,7 +16,7 @@ const ChatInput = ({ handler }: ChatInputProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md flex gap-2">
+    <form onSubmit={handleSubmit} className="w-1/2 mt-7 mx-auto flex bg-red-50">
       <input
         type="text"
         value={message}

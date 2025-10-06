@@ -3,7 +3,7 @@ import robotImg from '../assets/robot.png'
 const ChatMessage = ({message,sender}) => {
     const isRobot =sender==='robot'
   return (
-    <div className={`flex px-4 py-4 w-full text-2xl text-gray-700 items-center font-bold 
+    <div className={`flex w-1/2 px-4 py-4  text-2xl text-gray-700 items-center font-bold 
     ${isRobot?'justify-start':'justify-end'}
     `}>
   
