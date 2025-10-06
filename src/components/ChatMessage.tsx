@@ -1,6 +1,5 @@
 import userImg from '../assets/user.png';
 import robotImg from '../assets/robot.png'
-import { use } from 'react';
 const ChatMessage = ({message,sender}) => {
     const isRobot =sender==='robot'
   return (
