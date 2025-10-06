@@ -3,18 +3,13 @@ import ChatInput from "./components/ChatInput"
 import ChatMessage from "./components/ChatMessage"
 
 function App() {
-const[chatMessages,setChatMessages]=useState([
-    {
-      id:1,
-      message:'Hello!How are you?',
-      sender:'user'
-    },
-    {
-      id:2,
-      message:'I am Good ,How can I help You?',
-      sender:'robot'
-    }
-  ])
+type ChatMessageType = {
+  message: string;
+  sender: string;
+  id: number;
+};
+
+const [chatMessages, setChatMessages] = useState<ChatMessageType[]>([]);
 
  const sendUserMessage = (message: string) => {
   setChatMessages([
